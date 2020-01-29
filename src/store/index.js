@@ -1,27 +1,19 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
+import logger from "redux-logger";
+
+import { countReducer } from "../reducers/countReducer";
 
 const intialState = {
-  count: 0
-};
-
-const countReducer = (state, action) => {
-  switch (action.type) {
-    case "ADD":
-      return {
-        ...state,
-        count: state.count + 1
-      };
-    case "MINUS":
-      return {
-        ...state,
-        count: state.count - 1
-      };
-    default:
-      return state;
+  counter: {
+      count: 100
   }
 };
 
-const store = createStore(countReducer, intialState,  applyMiddleware(thunk));
+const store = createStore(
+  combineReducers({ counter: countReducer }),
+  intialState,
+  applyMiddleware(logger, thunk)
+);
 
 export default store;

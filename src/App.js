@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { add, minus, asyncAdd } from "./actions/countAction";
 
 function App({ count, add, minus, asyncAdd }) {
   return (
@@ -13,17 +14,9 @@ function App({ count, add, minus, asyncAdd }) {
 }
 
 const mapStateToProps = state => ({
-  count: state.count
+  count: state.counter.count
 });
 
-const mapDispatchToProps = {
-  add: () => ({ type: "ADD" }),
-  minus: () => ({ type: "MINUS" }),
-  asyncAdd: () => dispatch => {
-    setTimeout(() => {
-      dispatch({ type: "ADD" })
-    }, 1000);
-  }
-};
+const mapDispatchToProps = { add, minus, asyncAdd };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
