@@ -1,16 +1,23 @@
-import React, { Component } from 'react';
-import store from './store';
+import React from "react";
+import { connect } from "react-redux";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <p>{store.getState().count}</p>
-        <button onClick={() => store.dispatch({ type: "ADD" })}>+</button>
-        <button onClick={() => store.dispatch({ type: "MINUS" })}>-</button>
-      </div>
-    );
-  }
+function App({ count, add, minus }) {
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={add}>+</button>
+      <button onClick={minus}>-</button>
+    </div>
+  );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  count: state.count
+});
+
+const mapDispatchToProps = {
+  add: () => ({ type: "ADD" }),
+  minus: () => ({ type: "MINUS" })
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
