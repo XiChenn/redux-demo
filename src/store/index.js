@@ -1,4 +1,5 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 const intialState = {
   count: 0
@@ -21,6 +22,6 @@ const countReducer = (state, action) => {
   }
 };
 
-const store = createStore(countReducer, intialState);
+const store = createStore(countReducer, intialState,  applyMiddleware(thunk));
 
 export default store;
