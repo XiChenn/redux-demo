@@ -2,7 +2,7 @@ import compose from "./compose";
 
 export default function applyMiddleware(...middlewares) {
   return function enhancedCreateStore(createStore) {
-    return function chainMiddleware(...args) {
+    return function enhancedDispatch(...args) {
       const store = createStore(...args);
       const middlewareApi = {
         getState: store.getState,
