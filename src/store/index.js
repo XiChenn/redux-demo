@@ -1,13 +1,13 @@
-import { combineReducers, applyMiddleware } from "redux";
+import { applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 
 import { countReducer } from "../reducers/countReducer";
-import { createStore } from '../redux'
+import { createStore, combineReducers } from "../redux";
 
 const intialState = {
   counter: {
-      count: 100
+    count: 100
   }
 };
 
