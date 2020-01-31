@@ -2,8 +2,8 @@ function bindActionCreator(actionCreator, dispatch) {
   return (...args) => dispatch(actionCreator(...args));
 }
 
-// bindActionCreators is used in the implementation of react-redux connect;
-// It encapsulate dispatch and actionCreator
+// bindActionCreators is used in the implementation of react-redux connect function;
+// It encapsulates the dispatch and actionCreator
 export default function bindActionCreators(actionCreators, dispatch) {
   if (typeof actionCreators === "function") {
     return bindActionCreator(actionCreators, dispatch);

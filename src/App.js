@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect } from "./react-redux";
 import { add, minus, asyncAdd } from "./actions/countAction";
 
 function App({ count, add, minus, asyncAdd }) {
